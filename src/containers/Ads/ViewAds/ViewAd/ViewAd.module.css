@@ -1,0 +1,29 @@
+.adFrame {
+    border: solid 1px grey;
+    border-left: none;
+    border-right: none;
+    padding: 15px;
+    display: flex;
+    overflow: auto;
+}
+
+
+.column{
+}
+
+.left{
+    margin-right: 30px;
+}
+
+.middle{
+    margin-right: 30px;
+}
+
+.right{
+    margin-left: auto;
+}
+
+.avatar{
+    width: 150px;
+    height: 150px;
+}
