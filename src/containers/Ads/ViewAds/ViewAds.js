@@ -33,6 +33,11 @@ const ViewAds = () => {
     }
 
 
+    const edtBtnHandler = (adId) => {
+        console.log("edit ad: ", adId)
+    }
+
+
     useEffect(() => {
         axios.get('/ads')
         .then((res) => {
@@ -57,8 +62,9 @@ const ViewAds = () => {
                 description = {ad.description}
                 marketplaces = {["Ebay-Kleinanzeige", "Immowelt"]}
                 delAd = {(adId) => delBtnHandler(adId)}
+                edtAd = {(adId) => edtBtnHandler(adId)}
             />
-    )});
+    )}).reverse();
     
 
 

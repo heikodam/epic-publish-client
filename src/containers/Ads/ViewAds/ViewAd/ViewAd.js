@@ -12,7 +12,7 @@ const ViewAd = (props) => {
                 <p>{props.date} </p>
                 <div>
                     <button type="button" className={classes.del_btn} onClick={() => props.delAd(props.adId)}>Delete</button>
-                    <button type="button" className={classes.edt_btn} >Edit</button>
+                    <button type="button" className={classes.edt_btn} onClick={() => props.edtAd(props.adId)}>Edit</button>
                 </div>
             </div>
             <div className={[classes.column, classes.middle].join(" ")}>
