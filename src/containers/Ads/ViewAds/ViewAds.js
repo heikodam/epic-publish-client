@@ -30,6 +30,10 @@ const ViewAds = () => {
 
     const delBtnHandler = (adId) => {
         console.log("deleted ad: ", adId)
+        // axios.delete('/delete-ad', {params: {_id: adId}})
+        // .then(
+        
+        // )
     }
 
 

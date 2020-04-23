@@ -17,7 +17,6 @@ const CreateNewAd = props => {
 
     const inputChangeHandler = (event, formElName) => {
 
-        console.log("In inputChangeHandlre formElName: ", formElName)
 
         var updatedFormElement = {}
         if(formElName === "imgUpload"){
