@@ -28,6 +28,10 @@ const ViewAds = () => {
         return [year, month, day].join('-');
     }
 
+    const delBtnHandler = (adId) => {
+        console.log("deleted ad: ", adId)
+    }
+
 
     useEffect(() => {
         axios.get('/ads')
@@ -47,10 +51,12 @@ const ViewAds = () => {
     return (
         <ViewAd 
                 key = {ad._id}
+                adId = {ad._id}
                 date = {formatDate(ad.date)}
                 title = {ad.title}
                 description = {ad.description}
                 marketplaces = {["Ebay-Kleinanzeige", "Immowelt"]}
+                delAd = {(adId) => delBtnHandler(adId)}
             />
     )});
     

@@ -8,7 +8,21 @@
 }
 
 
-.column{
+button {
+    margin: 10px;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.del_btn{
+    background-color: red;
+}
+
+.edt_btn{
+    background-color: green;
 }
 
 .left{

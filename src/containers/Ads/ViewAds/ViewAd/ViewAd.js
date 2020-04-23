@@ -5,13 +5,15 @@ import HouseIcon from '../../../../resources/house_icon.png';
 
 
 const ViewAd = (props) => {
-    console.log("props: ", props)
     return (
         <div className={classes.adFrame}>
             <div className={[classes.column, classes.left].join(" ")}>
                 <img src={HouseIcon} alt="" className={classes.avatar}/>
-                {/* <img src={HouseIcon} alt="" className={classes.avatar}/> */}
                 <p>{props.date} </p>
+                <div>
+                    <button type="button" className={classes.del_btn} onClick={() => props.delAd(props.adId)}>Delete</button>
+                    <button type="button" className={classes.edt_btn} >Edit</button>
+                </div>
             </div>
             <div className={[classes.column, classes.middle].join(" ")}>
                 <h3>{props.title}</h3>
