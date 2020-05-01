@@ -9,7 +9,7 @@ import ViewAds from './containers/Ads/ViewAds/ViewAds';
 import Login from './containers/Authentication/Login';
 import SignUp from './containers/Authentication/SignUp';
 import Logout from './containers/Authentication/Logout';
-import AuthContext from './hoc/ContextAPI/AuthContext';
+import {AuthContext, AdsContext} from './hoc/ContextAPI/AuthContext';
 
 
 function App() {
@@ -31,11 +31,25 @@ function App() {
     }
   }, isToken)
 
-  
+  const [contextAds, dispatchAds] = useReducer((ads, action) =>{
+    switch(action.type){
+      case 'setAds':
+        return action.ads
+      case 'removeAd':
+        return true
+      case 'clearAds':
+        return true
+      case 'error':
+        return null
+      default:
+        throw new Error();
+    }
+  }, null)
 
 
   return (
     <AuthContext.Provider value={{isUser, dispatchUser}}>
+    <AdsContext.Provider value={{contextAds, dispatchAds}}>
     {/* //   <AuthContext.Consumer >
         // {props => ( */}
           <Layout>
@@ -50,6 +64,7 @@ function App() {
         </Layout>
     {/* //     )}
     //   </AuthContext.Consumer> */}
+    </AdsContext.Provider>
     </AuthContext.Provider>
   );
 }

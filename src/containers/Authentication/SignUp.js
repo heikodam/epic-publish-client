@@ -9,7 +9,7 @@ import signUpForm from '../../forms/auth/signUpForm';
 import {updateObject, checkValidity} from '../../shared/utility';
 import axios from '../../axios';
 
-import AuthContext from '../../hoc/ContextAPI/AuthContext';
+import {AuthContext} from '../../hoc/ContextAPI/AuthContext';
 
 
 

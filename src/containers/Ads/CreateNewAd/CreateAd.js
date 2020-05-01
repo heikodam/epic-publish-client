@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import axios from '../../../axios';
 import Input from '../../../components/UI/Input/Input';
@@ -7,6 +7,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 
 import combinedForms from '../../../forms/ad/combined';
 import {updateObject, checkValidity} from '../../../shared/utility';
+import {AdsContext} from '../../../hoc/ContextAPI/AuthContext';
 
 
 const CreateNewAd = props => {
@@ -14,6 +15,7 @@ const CreateNewAd = props => {
     const [adData, setAdData] = useState(combinedForms);
     const [isSending, setIsSending] = useState(false);
     const [formIsValid, setFormIsValid] = useState(true);
+    const {dispatchAds} = useContext(AdsContext)
 
     const inputChangeHandler = (event, formElName) => {
 
@@ -79,6 +81,7 @@ const CreateNewAd = props => {
             console.log(err)
             setIsSending(false)
         })
+        dispatchAds({type: "setAds", ads: null})
         setAdData(combinedForms)
     }
 

@@ -3,7 +3,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import axios from '../../axios';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-import AuthContext from '../../hoc/ContextAPI/AuthContext';
+import {AuthContext} from '../../hoc/ContextAPI/AuthContext';
 
 
 const Logout = () => {

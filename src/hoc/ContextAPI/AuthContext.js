@@ -1,5 +1,4 @@
 import React from 'react';
 
-const AuthContext = React.createContext(false);
-
-export default AuthContext;
+export const AuthContext = React.createContext(false);
+export const AdsContext = React.createContext();
