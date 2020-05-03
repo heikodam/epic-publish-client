@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Input from '../../../components/UI/Input/Input';
 import Button from '../../../components/UI/Button/Button';
@@ -11,12 +12,13 @@ import marketLoginForm from '../../../forms/marketLogin/combined';
 import {updateObject, checkValidity} from '../../../shared/utility';
 
 
-const MarketUserData = () => {
+const CreateMarketplace = () => {
 
     const [loginData, setLoginData] = useState(marketLoginForm);
     const [isSending, setIsSending] = useState(false);
     const [formIsValid, setFormIsValid] = useState(false);
     const [res, setRes] = useState("");
+    const history = useHistory()
 
     const inputChangeHandler = (event, formElName) => {
         const updatedFormElement = updateObject(loginData[formElName], {
@@ -54,15 +56,13 @@ const MarketUserData = () => {
 
         axios.post('/marketplaces', {...sendLoginData})
         .then((res) => {
-            console.log(res)
             if(!res.data.isUser){
             }
             setIsSending(false)
-            setRes("Your data was saved successfully!!!");
+            history.push("/marketplaces/me")
             
         })
         .catch((err) => {
-            console.log(err)
             setRes("There was an error");
             setIsSending(false)
         })
@@ -115,4 +115,4 @@ const MarketUserData = () => {
 
 }
 
-export default MarketUserData;
+export default CreateMarketplace;

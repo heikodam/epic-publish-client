@@ -1,0 +1,46 @@
+.button {
+    margin: 10px;
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.del_btn{
+    background-color: red;
+    margin-left: 0;
+}
+
+.edt_btn{
+    background-color: green;
+}
+
+.dlt_btn{
+    background-color: blue;
+    margin-right: 30px;
+}
+
+
+.marketplace {
+    border-top: solid 1px grey;
+    border-left: none;
+    border-right: none;
+    padding: 30px;
+    overflow: auto;
+
+}
+
+.marketplace div{
+    display: inline-block;
+}
+
+.title {
+    display: inline;
+}
+
+.value {
+    display: inline;
+    margin-left: 5px;
+    margin-right: 40px;
+}

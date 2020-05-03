@@ -1,39 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 
-import {updateObject, formatDate} from '../../../shared/utility';
+import {updateObject} from '../../../shared/utility';
 import axios from '../../../axios';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Button from '../../../components/UI/Button/Button';
-import classes from './Profile.module.css';
+import classes from './Marketplace.module.css';
 
 
 const Profile = (props) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [profile, setProfile] = useState({});
+    const [marketplace, setMarketplace] = useState({});
     const [isEditing, setIsEditing] = useState(false)
     const history = useHistory()
-    
+    const marketplaceId = props.match.params.id
 
 
     const delBtnHandler = () => {
-        // First delete Marketplaces
-        // Delte all ads
-        if(window.confirm("This will delete all your data and account")){
-            try {
-                axios.delete('/ads/me')
-                axios.delete('/marketplaces/me')
-                axios.delete('/users/me')
-
-                
-                history.push("/logout")
-            } catch {
+        
+            axios.delete('/marketplaces/me/'+ marketplaceId)
+            .then(
+                history.push("/marketplaces/me")
+            ).catch(
                 setIsError(true)
-            }
-            
-        }
+            )
     }
 
     const edtBtnHandler = () => {
@@ -41,16 +33,21 @@ const Profile = (props) => {
     }
 
     const onChangeHandler = (event, key) => {
-        const updatedAd = updateObject(profile, {[key]: event.target.value})
-        setProfile(updatedAd);
+        const updatedMarketplace = updateObject(marketplace, {[key]: event.target.value})
+        setMarketplace(updatedMarketplace);
     }
 
     const onSubmitHandler = (event) => {
 
         event.preventDefault();
-        var updatedProfile = {...profile}
-        delete updatedProfile.date 
-        axios.patch('/users/me/', updatedProfile)
+        var updatedMarketplace = {...marketplace}
+        delete updatedMarketplace._id 
+        delete updatedMarketplace.__v 
+        delete updatedMarketplace.userId 
+        delete updatedMarketplace.password 
+        delete updatedMarketplace.marketplace
+
+        axios.patch('/marketplaces/me/' + marketplaceId, updatedMarketplace)
         .then(() => {
             setIsError(false)
             setIsEditing(false)
@@ -66,10 +63,10 @@ const Profile = (props) => {
 
     useEffect(() => {
         setIsLoading(true)
-        axios.get('/users/me/')
+        axios.get('/marketplaces/me/' + marketplaceId)
         .then((res) => {
             setIsError(false)
-            setProfile(res.data)
+            setMarketplace(res.data)
             setIsLoading(false)
         })
         .catch((err) => {
@@ -79,25 +76,11 @@ const Profile = (props) => {
             
         
         
-    }, [])
+    }, [marketplaceId])
 
     const classDel_btn = [classes.del_btn, classes.button].join(" ")
     const classEdt_btn = [classes.edt_btn, classes.button].join(" ")
 
-    var profileDetails = [];
-    const profileKeys = Object.keys(profile)
-
-    const notDisplayKeys = ["date"]
-    profileDetails = profileKeys.map((key) => {
-        if(typeof(profile[key]) === "object" || notDisplayKeys.includes(key)){
-            return null
-        }
-        return (
-        <div key={key} className={classes.block}>
-            <h4 className={classes.title}>{key}: </h4>       
-            {isEditing ? <input value={profile[key]} onChange={(event) => onChangeHandler(event, key)} /> : <p className={classes.value}>{profile[key]}</p>}
-        </div>
-    )})
 
 
     return (
@@ -108,12 +91,16 @@ const Profile = (props) => {
             
             {isLoading ? <Spinner /> : (
                 <div>
-                    <div className={classes.block}>
-                        <h4 className={classes.title}>Date: </h4>       
-                        <p className={classes.value}>{formatDate(profile.date)}</p>
-                    </div>
+                    <p>To change the Marketplace and your Password, delete this Marketplace and create a new one</p>
                     <form onSubmit={onSubmitHandler}>
-                        {profileDetails}
+                        <div className={classes.block}>
+                            <h4 className={classes.title}>Username: </h4>       
+                            {isEditing ? <input value={marketplace.username} onChange={(event) => onChangeHandler(event, "username")} /> : <p className={classes.value}>{marketplace.username}</p>}
+                        </div> 
+                        <div className={classes.block}>
+                            <h4 className={classes.title}>Marketplace: </h4>       
+                            <p className={classes.value}>{marketplace.marketplace}</p>
+                        </div>
                         {isEditing ? <Button btnType="Success">Save</Button> : null}
                     </form>
                 </div>

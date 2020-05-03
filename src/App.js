@@ -4,7 +4,9 @@ import Cookies from 'js-cookie';
 
 import Layout from './hoc/Layout/Layout';
 import CreateAd from './containers/Ads/CreateNewAd/CreateAd';
-import MarketUserData from './containers/Ads/MarketUserData/MarketUserData';
+import Marketplaces from './containers/Marketplaces/Marketplaces';
+import Marketplace from './containers/Marketplaces/Marketplace/Marketplace';
+import CreateMarketplace from './containers/Marketplaces/CreateMarketplace/CreateMarketplace';
 import ViewAds from './containers/Ads/ViewAds/ViewAds';
 import Login from './containers/Authentication/Login';
 import SignUp from './containers/Authentication/SignUp';
@@ -57,7 +59,9 @@ function App() {
               <Route path="/ads/me/:id" component={Ad} />
               <Route path="/ads/me" component={ViewAds} />
               <Route path="/ads/create" component={CreateAd} />
-              <Route path="/market-user-data" component={MarketUserData} />
+              <Route path="/marketplaces/create" component={CreateMarketplace} />
+              <Route path="/marketplaces/me/:id" component={Marketplace} />
+              <Route path="/marketplaces/me" component={Marketplaces} />
             </Switch>
         </Layout>
     {/* //     )}

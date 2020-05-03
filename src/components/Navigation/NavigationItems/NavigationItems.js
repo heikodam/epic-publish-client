@@ -17,7 +17,7 @@ const NavigationItems = () => {
             <React.Fragment>
                 <NavigationItem link='/'>Home</NavigationItem>
                 <NavigationItem link='/ads/me'>Your Ads</NavigationItem>
-                <NavigationItem link='/market-user-data'>Enter Market Login Details</NavigationItem>
+                <NavigationItem link='/marketplaces/me'>Marketplaces</NavigationItem>
                 <NavigationItem link='/users/me'>Profile</NavigationItem>
                 <NavigationItem link='/logout'>Logout</NavigationItem>
             </React.Fragment>
