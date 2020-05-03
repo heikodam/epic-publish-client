@@ -43,7 +43,7 @@ const Login = () => {
             var value = {[el]: formData[el].value}
             loginData = updateObject(loginData, value)
         }
-        axios.post('/login', {...loginData})
+        axios.post('/users/login', {...loginData})
         .then((res) => {
             console.log(res)
             if(!res.data.isUser){

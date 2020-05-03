@@ -14,7 +14,7 @@ const Logout = () => {
 
 
     useEffect(() => {
-        axios.post('/logout')
+        axios.post('/users/logout')
         .then((res) => {
             console.log(res)
             dispatchUser({type: "isNotUser"})

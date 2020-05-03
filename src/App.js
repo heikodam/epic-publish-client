@@ -10,6 +10,7 @@ import Login from './containers/Authentication/Login';
 import SignUp from './containers/Authentication/SignUp';
 import Logout from './containers/Authentication/Logout';
 import {AuthContext, AdsContext} from './hoc/ContextAPI/AuthContext';
+import Ad from './containers/Ads/Ad/Ad';
 
 
 function App() {
@@ -35,12 +36,6 @@ function App() {
     switch(action.type){
       case 'setAds':
         return action.ads
-      case 'removeAd':
-        return true
-      case 'clearAds':
-        return true
-      case 'error':
-        return null
       default:
         throw new Error();
     }
@@ -57,8 +52,9 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignUp} />
               <Route path="/logout" component={Logout} />
-              <Route path="/ads" component={ViewAds} />
-              <Route path="/create-ad" component={CreateAd} />
+              <Route path="/ads/me/:id" component={Ad} />
+              <Route path="/ads/me" component={ViewAds} />
+              <Route path="/ads/create" component={CreateAd} />
               <Route path="/market-user-data" component={MarketUserData} />
             </Switch>
         </Layout>

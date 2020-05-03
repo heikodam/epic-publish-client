@@ -1,9 +1,21 @@
 const signUp = {
-    name: {
-        name: "name",
+    firstname: {
+        name: "firstname",
         value: "",
         elConfig: {
-            placeholder: "Name"
+            placeholder: "First Name"
+        },
+        validation: {
+            required: true
+        },
+        valid: false,
+        touched: false
+    },
+    surname: {
+        name: "surname",
+        value: "",
+        elConfig: {
+            placeholder: "Surname"
         },
         validation: {
             required: true

@@ -23,7 +23,7 @@ const CreateNewAd = props => {
         var updatedFormElement = {}
         if(formElName === "imgUpload"){
             updatedFormElement = updateObject(adData[formElName], {
-                value: event.target.files[0],
+                value: event.target.files,
                 // valid: checkValidity(
                 //     event.target.value,
                 //     adData[formElName].validation
@@ -57,10 +57,20 @@ const CreateNewAd = props => {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
+        
+        // console.log(adData);
+
         setIsSending(true);
 
         const adDataToSave = new FormData();
-        adDataToSave.append('imgUpload', adData.imgUpload.value)
+
+        for (var x = 0; x<adData.imgUpload.value.length; x++){
+            adDataToSave.append("photos", adData.imgUpload.value[x])
+        }
+
+        // adDataToSave.append('photos', adData.imgUpload.value)
+
+        // console.log("Ecntype: ",adData.imgUpload.value[0])
 
         var formValues =  {} //new FormData()
         for(var el in adData){
@@ -70,8 +80,9 @@ const CreateNewAd = props => {
        
         adDataToSave.append("formValues", JSON.stringify(formValues))
         
+        console.log("adDataToSave: ", adDataToSave)
 
-        axios.post('/create-ad', adDataToSave)
+        axios.post('/ads', adDataToSave)
         .then((res) => {
             console.log("Sucessfully return")
             console.log(res)
@@ -111,7 +122,7 @@ const CreateNewAd = props => {
 
             <form onSubmit={onSubmitHandler}>
                 {form}
-                <input type="file" onChange={(event => inputChangeHandler(event, "imgUpload"))}/>
+                <input type="file" onChange={(event => inputChangeHandler(event, "imgUpload"))} encType="multipart/form-data" multiple/>
             {isSending ? <Spinner /> : <Button btnType="Success" disabled={!formIsValid}>Publish Ad</Button>}
             {!formIsValid ? <span>Please fill out the Form correctly</span> : null}
             </form>

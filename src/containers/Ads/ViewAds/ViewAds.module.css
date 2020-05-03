@@ -1,0 +1,16 @@
+.button {
+    margin: 10px;
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.del_btn{
+    background-color: red;
+}
+
+.edt_btn{
+    background-color: green;
+}

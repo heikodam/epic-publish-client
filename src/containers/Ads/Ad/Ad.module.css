@@ -1,0 +1,43 @@
+.block{
+    border: 1px solid black;
+    margin: 30px;
+    padding: 5px;
+    padding-top: 0;
+}
+
+.title{
+    padding-top: 0;
+    margin: 2px 5px;
+
+    text-transform: uppercase;
+}
+
+.value{
+    margin: 2px 5px;
+}
+
+.button {
+    margin: 10px;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.del_btn{
+    background-color: red;
+}
+
+.edt_btn{
+    background-color: green;
+}
+
+.img{
+    width: auto;
+    height: 200px;
+}
+
+.error{
+    color: red;
+}

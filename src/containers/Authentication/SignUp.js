@@ -101,7 +101,7 @@ const SignUp = () => {
 
         delete signupData.confirmPassword
 
-        axios.post('/createUser', signupData)
+        axios.post('/users', signupData)
         .then((res) => {
             console.log("Sucessfully return")
             console.log(res)

@@ -8,12 +8,12 @@
 }
 
 
-button {
+.button {
     margin: 10px;
     border: none;
     color: white;
-    padding: 5px;
-    border-radius: 20%;
+    padding: 10px;
+    border-radius: 30px;
     cursor: pointer;
 }
 
@@ -23,6 +23,10 @@ button {
 
 .edt_btn{
     background-color: green;
+}
+
+.dlt_btn{
+    background-color: blue;
 }
 
 .left{

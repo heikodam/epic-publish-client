@@ -147,8 +147,8 @@ const ebayKleinanzeige = {
             isNumeric: true
         },
     },
-    heatingConsts: {
-        name: 'heatingConsts',
+    heatingCosts: {
+        name: 'heatingCosts',
         elConfig: {
             placeholder: 'Heizkosten in €'
         },

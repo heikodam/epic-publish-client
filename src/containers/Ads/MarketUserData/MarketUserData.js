@@ -52,7 +52,7 @@ const MarketUserData = () => {
         }
 
 
-        axios.post('/market-user-data', {...sendLoginData})
+        axios.post('/marketplaces', {...sendLoginData})
         .then((res) => {
             console.log(res)
             if(!res.data.isUser){
