@@ -6,6 +6,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import ViewAd from './ViewAd/ViewAd';
 import {AdsContext} from '../../../hoc/ContextAPI/AuthContext';
 import classes from './ViewAds.module.css';
+import {formatDate} from '../../../shared/utility';
 
 
 const ViewAds = () => {
@@ -13,21 +14,6 @@ const ViewAds = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const {contextAds, dispatchAds} = useContext(AdsContext);
-
-    // Code to format date from: https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd
-    function formatDate(date) {
-        var d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
-    
-        if (month.length < 2) 
-            month = '0' + month;
-        if (day.length < 2) 
-            day = '0' + day;
-    
-        return [year, month, day].join('-');
-    }
 
     const delBtnHandler = (adId) => {
         axios.delete('/ads/me/' + adId)

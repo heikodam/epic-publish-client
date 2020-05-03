@@ -11,6 +11,7 @@ import SignUp from './containers/Authentication/SignUp';
 import Logout from './containers/Authentication/Logout';
 import {AuthContext, AdsContext} from './hoc/ContextAPI/AuthContext';
 import Ad from './containers/Ads/Ad/Ad';
+import Profile from './containers/Authentication/Profile/Profile';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignUp} />
               <Route path="/logout" component={Logout} />
+              <Route path="/users/me" component={Profile} />
               <Route path="/ads/me/:id" component={Ad} />
               <Route path="/ads/me" component={ViewAds} />
               <Route path="/ads/create" component={CreateAd} />

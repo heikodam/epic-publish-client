@@ -97,7 +97,7 @@ const Ad = (props) => {
     var adDetails = [];
     const adKeys = Object.keys(ad)
 
-    const notDisplayKeys = ["_id", "userId", "_v", "imgs"]
+    const notDisplayKeys = ["_id", "userId", "_v", "imgs", "date"]
     adDetails = adKeys.map((key) => {
         if(typeof(ad[key]) === "object" || notDisplayKeys.includes(key) || !ad[key]){
             return null
