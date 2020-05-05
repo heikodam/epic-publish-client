@@ -3,7 +3,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import axios from '../../axios';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-import {AuthContext} from '../../hoc/ContextAPI/AuthContext';
+import {AuthContext, AdsContext} from '../../hoc/ContextAPI/AuthContext';
 
 
 const Logout = () => {
@@ -11,6 +11,7 @@ const Logout = () => {
     const [isLoggedOut, setIsLoggedOut] = useState(false);
 
     const { dispatchUser } = useContext(AuthContext);
+    const { dispatchAds } = useContext(AdsContext);
 
 
     useEffect(() => {
@@ -18,6 +19,7 @@ const Logout = () => {
         .then((res) => {
             console.log(res)
             dispatchUser({type: "isNotUser"})
+            dispatchAds({type: "setAds", ads: null})
             setIsLoggedOut(true)
             setIsLoading(false)
         })
@@ -27,7 +29,7 @@ const Logout = () => {
             setIsLoggedOut(false)
             setIsLoading(false)
         })
-    }, [dispatchUser])
+    }, [dispatchUser, dispatchAds])
 
     return (
         <React.Fragment>

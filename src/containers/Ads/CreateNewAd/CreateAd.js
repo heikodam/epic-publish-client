@@ -8,13 +8,15 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import combinedForms from '../../../forms/ad/combined';
 import {updateObject, checkValidity} from '../../../shared/utility';
 import {AdsContext} from '../../../hoc/ContextAPI/AuthContext';
+import classes from './CreateAd.module.css';
 
 
 const CreateNewAd = props => {
 
     const [adData, setAdData] = useState(combinedForms);
     const [isSending, setIsSending] = useState(false);
-    const [formIsValid, setFormIsValid] = useState(true);
+    const [isError, setIsError] = useState(false);
+    const [formIsValid, setFormIsValid] = useState(false);
     const {dispatchAds} = useContext(AdsContext)
 
     const inputChangeHandler = (event, formElName) => {
@@ -84,16 +86,20 @@ const CreateNewAd = props => {
 
         axios.post('/ads', adDataToSave)
         .then((res) => {
-            console.log("Sucessfully return")
-            console.log(res)
+            // console.log("Sucessfully return")
+            // console.log(res)
+            setIsError(false)
+            dispatchAds({type: "setAds", ads: null})
+            setAdData(combinedForms)
             setIsSending(false)
+
         })
         .catch((err) => {
-            console.log(err)
+            // console.log(err)
+            setIsError(true)
             setIsSending(false)
         })
-        dispatchAds({type: "setAds", ads: null})
-        setAdData(combinedForms)
+        
     }
 
     // Creating the Form
@@ -123,8 +129,11 @@ const CreateNewAd = props => {
             <form onSubmit={onSubmitHandler}>
                 {form}
                 <input type="file" onChange={(event => inputChangeHandler(event, "imgUpload"))} encType="multipart/form-data" multiple/>
-            {isSending ? <Spinner /> : <Button btnType="Success" disabled={!formIsValid}>Publish Ad</Button>}
-            {!formIsValid ? <span>Please fill out the Form correctly</span> : null}
+                <br/>
+                {isError ? <span className={classes.error}>Please make sure the form was filled out correctly and you only uploaded Images</span> : null}
+                {!formIsValid ? <span className={classes.error}>Please fill out the Form correctly</span> : null}
+                <br/>
+                {isSending ? <Spinner /> : <Button btnType="Success" disabled={!formIsValid}>Publish Ad</Button>}   
             </form>
             
         </React.Fragment>
