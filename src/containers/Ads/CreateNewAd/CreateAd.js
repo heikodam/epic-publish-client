@@ -5,6 +5,7 @@ import Input from '../../../components/UI/Input/Input';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
+import { useHistory } from 'react-router-dom';
 import combinedForms from '../../../forms/ad/combined';
 import {updateObject, checkValidity} from '../../../shared/utility';
 import {AdsContext} from '../../../hoc/ContextAPI/AuthContext';
@@ -19,8 +20,9 @@ const CreateNewAd = props => {
     const [formIsValid, setFormIsValid] = useState(false);
     const {dispatchAds} = useContext(AdsContext)
 
-    const inputChangeHandler = (event, formElName) => {
+    const history = useHistory()
 
+    const inputChangeHandler = (event, formElName) => {
 
         var updatedFormElement = {}
         if(formElName === "imgUpload"){
@@ -60,7 +62,6 @@ const CreateNewAd = props => {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         
-        // console.log(adData);
 
         setIsSending(true);
 
@@ -69,10 +70,6 @@ const CreateNewAd = props => {
         for (var x = 0; x<adData.imgUpload.value.length; x++){
             adDataToSave.append("photos", adData.imgUpload.value[x])
         }
-
-        // adDataToSave.append('photos', adData.imgUpload.value)
-
-        // console.log("Ecntype: ",adData.imgUpload.value[0])
 
         var formValues =  {} //new FormData()
         for(var el in adData){
@@ -86,13 +83,11 @@ const CreateNewAd = props => {
 
         axios.post('/ads', adDataToSave)
         .then((res) => {
-            // console.log("Sucessfully return")
-            // console.log(res)
             setIsError(false)
             dispatchAds({type: "setAds", ads: null})
             setAdData(combinedForms)
             setIsSending(false)
-
+            history.push("/ads/me")
         })
         .catch((err) => {
             // console.log(err)
