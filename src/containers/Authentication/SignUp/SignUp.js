@@ -19,7 +19,6 @@ const SignUp = () => {
 
     const [isSending, setIsSending] = useState(false);
     const [isUser, setIsUser] = useState(undefined);
-    const [emailUsed, setEmailUsed] = useState(undefined);
     const [formIsValid, setFormIsValid] = useState(false);
     
 
@@ -69,8 +68,7 @@ const SignUp = () => {
         const timer = setTimeout(() => {
             axios.post("/emailUsed", {email: formData.email.value})
             .then((res) => {
-                setEmailUsed(res.data)
-                if(!formData.email.errMsg && emailUsed){
+                if(!formData.email.errMsg && res.data){
                     const errMsg = "This email is not available"
                     const updatedFormDataEl = updateObject(formData.email, {errMsg: errMsg, valid: false})
                     const updatedFormData = updateObject(formData, {[updatedFormDataEl.name] :updatedFormDataEl})
@@ -86,7 +84,7 @@ const SignUp = () => {
         return () => {
             clearTimeout(timer)
         }
-    }, [formData, emailUsed])
+    }, [formData])
 
     const onSubmitHandler = (event) => {
         event.preventDefault();

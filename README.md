@@ -1,3 +1,39 @@
+[Backend Repo](https://github.com/heikodam/epic-publish-backend)
+
+# My Project: Epic Publish:
+Go on the Website fill out a form to post an Ad to rent our your Apartment. The Web App should then post it on the different marketplaces (eg. ebay-kleinanzeige, immobilienscout24, immowelt...).
+
+<a name="how-far"/>
+
+## How far did I get?
+One is able to create/edit/delete an account, ads and Marketplaces. But the functionality of publishing the ads on the marketplaces I have not started yet. 
+
+The Project is Live here: [Epic Publish](https://fierce-tundra-77613.herokuapp.com/)
+You can either signup and add your own data or use this account where data is already populated:
+
+Email: a@b.com
+Password: 1234567
+
+
+<a name="architecture"/>
+
+## Architecture & Tech Stack
+
+<img src="https://res.cloudinary.com/heikodam/image/upload/v1588881439/Epic_Publish_Architecture_umw5cc.jpg" width="700">
+
+Client: React
+
+Backend: 
+- Nodejs
+- For Micorservices I used [cote](https://www.npmjs.com/package/cote) a zero-configuration microservices
+
+DB:
+My NoSQL DB is running on [MongoDB](https://www.mongodb.com/)
+
+Img DB:
+Imgs are stored on [Cloudinary](https://cloudinary.com/)
+
+# Reacts default README
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

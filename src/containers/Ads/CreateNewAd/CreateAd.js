@@ -99,6 +99,7 @@ const CreateNewAd = props => {
     }
     let form = formElArray.map(formEl => (
         <Input
+            className = {classes.searchBar}
             key={formEl.name}
             elType = {formEl.elType}
             elConfig = {formEl.elConfig}
@@ -115,10 +116,9 @@ const CreateNewAd = props => {
 
         <React.Fragment>
             <h3> Create a New Ad here</h3>
-
+            <p>FYI: To Test this only the Title, Description, Kaltmiete (Number) must be added (optional: all other inputs including images).</p>
             <form onSubmit={onSubmitHandler}>
                 {form}
-                <input type="file" onChange={(event => inputChangeHandler(event, "imgUpload"))} encType="multipart/form-data" multiple/>
                 <br/>
                 {isError ? <span className={classes.error}>Please make sure the form was filled out correctly and you only uploaded Images</span> : null}
                 {!formIsValid ? <span className={classes.error}>Please fill out the Form correctly</span> : null}

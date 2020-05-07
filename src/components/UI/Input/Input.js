@@ -56,7 +56,11 @@ const Input = (props) => {
             break;
         case ('fileUpload'):
             inputElement = (
-                <div><input type={props.elConfig.type} {...props.elConfig}/></div>
+                <div><input 
+                type={props.elConfig.type} 
+                {...props.elConfig}
+                onChange={props.changed}
+                /></div>
             )
             
             break;

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import axios from '../../../axios';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import Input from '../../../components/UI/Input/Input';
 import ViewAd from './ViewAd/ViewAd';
 import {AdsContext} from '../../../ContextAPI/Context';
 import classes from './ViewAds.module.css';
@@ -14,6 +15,12 @@ const ViewAds = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const {contextAds, dispatchAds} = useContext(AdsContext);
+    const [localAds, setLocalAds] = useState()
+    const [searchValue, setSearchValue] = useState("")
+
+    useEffect(() => {
+        setLocalAds(contextAds)
+    }, [contextAds])
 
     const delBtnHandler = (adId) => {
         axios.delete('/ads/me/' + adId)
@@ -45,6 +52,29 @@ const ViewAds = () => {
         history.push("/ads/me/" + adId)
     }
 
+    const searchChangeHandler = (event) => {
+        setSearchValue(event.target.value)
+    }
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            const filteredAds = contextAds.filter((ad) => {
+                // Check in title or description
+                // make lowercase and remove spaces
+                return (ad.title.toLowerCase().replace(/\s+/g, '').includes(searchValue.replace(/\s+/g, '')) || 
+                ad.description.toLowerCase().replace(/\s+/g, '').includes(searchValue.replace(/\s+/g, ''))
+                )
+            })
+
+            setLocalAds(filteredAds)
+
+        }, 500)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [searchValue, contextAds])
+
     useEffect(() => {
         if(!contextAds){
             setIsLoading(true)
@@ -62,11 +92,13 @@ const ViewAds = () => {
         
     }, [dispatchAds, contextAds])
 
+
+
     const defaultPic = "https://res.cloudinary.com/heikodam/image/upload/v1588514069/house_icon_adq7te.png"
     let adsEl = []
 
-    if(contextAds){
-        adsEl = contextAds.map((ad) => {
+    if(localAds){
+        adsEl = localAds.map((ad) => {
             return (
                 <ViewAd 
                         key = {ad._id}
@@ -93,6 +125,13 @@ const ViewAds = () => {
                 <button type="button" className={classDel_btn} onClick={delAds}>Delete All Ads</button>
                 <button type="button" className={classEdt_btn} onClick={createAd}>Create New Ad</button>
             </div>
+            <Input 
+            elType = {"input"}
+            elConfig = {{placeholder: "Search Ads...", type: "text"}}
+            value = {searchValue}
+            changed = {(event) => searchChangeHandler(event)}
+            />
+            {/* <input className={classes.searchBar} type="text" placeholder="Search Ads..." value={searchValue} onChange={(event) => {searchChangeHandler(event)}}></input> */}
             {isLoading ? <Spinner /> : null}
             {adsEl}
         </React.Fragment>

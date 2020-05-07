@@ -280,8 +280,9 @@ const ebayKleinanzeige = {
         elType: 'fileUpload',
         elConfig: {
             type: 'file',
-            accept: '.jpg, .jpeg, .png',
-            multiple: true
+            // accept: '.jpg, .jpeg, .png',
+            multiple: true,
+            encType: "multipart/form-data"
         }
     },
     zipCode: {
