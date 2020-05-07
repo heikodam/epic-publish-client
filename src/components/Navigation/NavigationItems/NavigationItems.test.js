@@ -4,14 +4,14 @@ import { BrowserRouter as Router } from 'react-router-dom';
 // import { configure, shallow } from 'enzyme';
 // import Adapter from 'enzyme-adapter-react-16';
 
-import {AuthContext, AdsContext} from '../../../hoc/ContextAPI/AuthContext';
+import {AuthContext, AdsContext} from '../../../ContextAPI/Context';
 
 import NavigationItems from './NavigationItems';
 import NavigationItem from './NavigationItem/NavigationItem';
 
 // configure({adapter: new Adapter()})
 
-test(' Should render Logged out NavigationItems ', () => {
+test(' Should render Logged In NavigationItems ', () => {
     const renderedNavigation = render(
         <AuthContext.Provider value={{isUser: true}}>
         <Router>
@@ -26,7 +26,7 @@ test(' Should render Logged out NavigationItems ', () => {
     expect(renderedNavigation.getAllByText("Logout")).toHaveLength(1);
 })
 
-test(' Should render Logged out NavigationItems ', () => {
+test(' Should render Logged Out NavigationItems ', () => {
 
     const renderedNavigation = render(
         <AuthContext.Provider value={{isUser: false}}>
@@ -35,7 +35,6 @@ test(' Should render Logged out NavigationItems ', () => {
             </Router>
         </AuthContext.Provider>
     )
-    // console.log(renderedNavigation.container)
     expect(renderedNavigation.getByText("Login")).toBeTruthy();
     expect(renderedNavigation.getByText("Signup")).toBeTruthy();
 })

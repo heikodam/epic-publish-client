@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {AdsContext} from '../../../hoc/ContextAPI/AuthContext';
+import {AdsContext} from '../../../ContextAPI/Context';
 import { useHistory } from 'react-router-dom';
 
 import {updateObject} from '../../../shared/utility';

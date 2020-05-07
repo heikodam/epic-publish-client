@@ -1,15 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import Input from '../../components/UI/Input/Input';
-import Button from '../../components/UI/Button/Button';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import Input from '../../../components/UI/Input/Input';
+import Button from '../../../components/UI/Button/Button';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
-import signUpForm from '../../forms/auth/signUpForm';
-import {updateObject, checkValidity} from '../../shared/utility';
-import axios from '../../axios';
+import signUpForm from '../../../forms/auth/signUpForm';
+import {updateObject, checkValidity} from '../../../shared/utility';
+import axios from '../../../axios';
 
-import {AuthContext} from '../../hoc/ContextAPI/AuthContext';
+import {AuthContext} from '../../../ContextAPI/Context';
 
 
 

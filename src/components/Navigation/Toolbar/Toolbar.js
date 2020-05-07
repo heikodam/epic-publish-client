@@ -6,13 +6,12 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 
 
 
-const toolbar = (props) => (
+const Toolbar = (props) => (
     <header className={classes.Toolbar}>
-        {/* Add stuff here to make the Nav Bar responsive and create a sideDrawer */}
         <nav>
             <NavigationItems/>
         </nav>
     </header>
 );
 
-export default toolbar;
+export default Toolbar;

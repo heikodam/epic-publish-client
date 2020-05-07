@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import axios from '../../../axios';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import ViewAd from './ViewAd/ViewAd';
-import {AdsContext} from '../../../hoc/ContextAPI/AuthContext';
+import {AdsContext} from '../../../ContextAPI/Context';
 import classes from './ViewAds.module.css';
 import {formatDate} from '../../../shared/utility';
 

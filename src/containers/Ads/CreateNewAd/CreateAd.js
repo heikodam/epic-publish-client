@@ -8,7 +8,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import { useHistory } from 'react-router-dom';
 import combinedForms from '../../../forms/ad/combined';
 import {updateObject, checkValidity} from '../../../shared/utility';
-import {AdsContext} from '../../../hoc/ContextAPI/AuthContext';
+import {AdsContext} from '../../../ContextAPI/Context';
 import classes from './CreateAd.module.css';
 
 

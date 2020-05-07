@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react';
 
-import axios from '../../axios';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import axios from '../../../axios';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
-import {AuthContext, AdsContext} from '../../hoc/ContextAPI/AuthContext';
+import {AuthContext, AdsContext} from '../../../ContextAPI/Context';
 
 
 const Logout = () => {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import classes from './NavigationItems.module.css';
 import NavigationItem from './NavigationItem/NavigationItem';
-import {AuthContext} from '../../../hoc/ContextAPI/AuthContext';
+import {AuthContext} from '../../../ContextAPI/Context';
 
 const NavigationItems = () => {
     const {isUser} = useContext(AuthContext);

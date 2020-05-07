@@ -2,16 +2,16 @@ import React, { useReducer } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-import Layout from './hoc/Layout/Layout';
+import Layout from './components/Layout/Layout';
 import CreateAd from './containers/Ads/CreateNewAd/CreateAd';
 import Marketplaces from './containers/Marketplaces/Marketplaces';
 import Marketplace from './containers/Marketplaces/Marketplace/Marketplace';
 import CreateMarketplace from './containers/Marketplaces/CreateMarketplace/CreateMarketplace';
 import ViewAds from './containers/Ads/ViewAds/ViewAds';
-import Login from './containers/Authentication/Login';
-import SignUp from './containers/Authentication/SignUp';
-import Logout from './containers/Authentication/Logout';
-import {AuthContext, AdsContext} from './hoc/ContextAPI/AuthContext';
+import Login from './containers/Authentication/Login/Login';
+import SignUp from './containers/Authentication/SignUp/SignUp';
+import Logout from './containers/Authentication/Logout/Logout';
+import {AuthContext, AdsContext} from './ContextAPI/Context';
 import Ad from './containers/Ads/Ad/Ad';
 import Profile from './containers/Authentication/Profile/Profile';
 
