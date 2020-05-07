@@ -48,8 +48,6 @@ function App() {
   return (
     <AuthContext.Provider value={{isUser, dispatchUser}}>
     <AdsContext.Provider value={{contextAds, dispatchAds}}>
-    {/* //   <AuthContext.Consumer >
-        // {props => ( */}
           <Layout>
           <Switch>
               <Route path="/login" component={Login} />
@@ -64,8 +62,6 @@ function App() {
               <Route path="/marketplaces/me" component={Marketplaces} />
             </Switch>
         </Layout>
-    {/* //     )}
-    //   </AuthContext.Consumer> */}
     </AdsContext.Provider>
     </AuthContext.Provider>
   );

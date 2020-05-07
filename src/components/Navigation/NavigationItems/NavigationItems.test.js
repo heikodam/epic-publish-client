@@ -1,15 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom'; 
-// import { configure, shallow } from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import {AuthContext, AdsContext} from '../../../ContextAPI/Context';
 
 import NavigationItems from './NavigationItems';
 import NavigationItem from './NavigationItem/NavigationItem';
 
-// configure({adapter: new Adapter()})
 
 test(' Should render Logged In NavigationItems ', () => {
     const renderedNavigation = render(

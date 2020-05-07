@@ -42,7 +42,6 @@ const Ad = (props) => {
 
     const onChangeHandler = (event, key) => {
 
-        // const updatedAd = Object.assign(ad, {[key]: event.target.value})
         const updatedAd = updateObject(ad, {[key]: event.target.value})
         setAd(updatedAd);
     }
@@ -71,11 +70,9 @@ const Ad = (props) => {
             setIsLoading(true)
             axios.get('/ads/me/' + adId)
             .then((res) => {
-                // console.log("Res data: ", res.data)
                 setIsError(false)
                 setAd(res.data)
                 setIsLoading(false)
-                // console.log("Ad from Backend: ", ad)
                 
             })
             .catch((err) => {
@@ -85,8 +82,6 @@ const Ad = (props) => {
         }else{
             const adIndex = contextAds.map((ad) => {return ad._id}).indexOf(adId)
             setAd(Object.assign({}, contextAds[adIndex]))
-            // console.log(adIndex)
-            // console.log("Ad from Context: ", ad)
         }
         
     }, [adId, contextAds])
@@ -109,7 +104,6 @@ const Ad = (props) => {
         </div>
     )})
 
-    // console.log("Ad", ad)
     var imgs = null;
     if(ad.imgs){
         imgs = ad.imgs.map((img) => (

@@ -19,8 +19,6 @@ const Profile = (props) => {
 
 
     const delBtnHandler = () => {
-        // First delete Marketplaces
-        // Delte all ads
         if(window.confirm("This will delete all your data and account")){
             try {
                 axios.delete('/ads/me')

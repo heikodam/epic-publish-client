@@ -17,15 +17,12 @@ const Logout = () => {
     useEffect(() => {
         axios.post('/users/logout')
         .then((res) => {
-            console.log(res)
             dispatchUser({type: "isNotUser"})
             dispatchAds({type: "setAds", ads: null})
             setIsLoggedOut(true)
             setIsLoading(false)
         })
         .catch((err) => {
-            console.log("IN CATCH")
-            console.log(err)
             setIsLoggedOut(false)
             setIsLoading(false)
         })

@@ -47,7 +47,6 @@ const CreateNewAd = props => {
         }
         
         const updatedAdData = updateObject(adData, {[formElName]: updatedFormElement});
-        // console.log(adData)
         setAdData(updateObject(updatedAdData));
 
         // CHECK IF FORM IS VALID TO ENABLE THE FORM SUBMIT BUTTON
@@ -55,7 +54,6 @@ const CreateNewAd = props => {
         // for (let inputIdentifier in updatedAdData) {
         // formIsValid = updatedAdData[inputIdentifier].valid && formIsValid;
         // }
-        // console.log(formIsValid)
         setFormIsValid(true)
     }
 
@@ -71,7 +69,7 @@ const CreateNewAd = props => {
             adDataToSave.append("photos", adData.imgUpload.value[x])
         }
 
-        var formValues =  {} //new FormData()
+        var formValues =  {} 
         for(var el in adData){
             var value = {[el]: adData[el].value}
             formValues = updateObject(formValues, value)
@@ -79,8 +77,6 @@ const CreateNewAd = props => {
        
         adDataToSave.append("formValues", JSON.stringify(formValues))
         
-        console.log("adDataToSave: ", adDataToSave)
-
         axios.post('/ads', adDataToSave)
         .then((res) => {
             setIsError(false)
@@ -90,7 +86,6 @@ const CreateNewAd = props => {
             history.push("/ads/me")
         })
         .catch((err) => {
-            // console.log(err)
             setIsError(true)
             setIsSending(false)
         })

@@ -216,7 +216,6 @@ const ebayKleinanzeige = {
         elConfig: {
             type: 'radio',
             options: [
-                // { name: 'adType', value: 'renting', checked: true, label: 'Ich Biete' },
                 { name: 'adType', value: 'renting', label: 'Ich Biete' },
                 { name: 'adType', value: 'searching', label: 'Ich suche' },
             ]
@@ -265,7 +264,6 @@ const ebayKleinanzeige = {
         elConfig: {
             type: 'radio',
             options: [
-                // { name: 'priceType', value: 'fixed', checked: true, label: 'Festpreis' },
                 { name: 'priceType', value: 'fixed', label: 'Festpreis' },
                 { name: 'priceType', value: 'negotiable', label: 'VB' },
                 { name: 'priceType', value: 'giveAway', label: 'Zu Verschenken' },
@@ -311,7 +309,6 @@ const ebayKleinanzeige = {
         elConfig: {
             type: 'radio',
             options: [
-                // { name: 'posterType', value: 'privat', checked: true, label: 'Privat' },
                 { name: 'posterType', value: 'privat', label: 'Privat' },
                 { name: 'posterType', value: 'commercial', label: 'Gewerblich' },
             ]

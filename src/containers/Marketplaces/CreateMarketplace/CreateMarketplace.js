@@ -67,15 +67,6 @@ const CreateMarketplace = () => {
             setIsSending(false)
         })
 
-        // console.log(loginData)
-        // for(var ela in loginData){
-        //     setLoginData(
-        //         updateObject(loginData,
-        //             updateObject(loginData[ela], {value: ""})
-        //         )
-        //     )
-        // }
-        // console.log(loginData)
     }
 
     // Creating the Form

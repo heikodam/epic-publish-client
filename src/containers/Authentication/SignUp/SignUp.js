@@ -17,7 +17,6 @@ const SignUp = () => {
 
     const [formData, setFormData] = useState(signUpForm);
 
-    // const [equalPass, setEqualPass] = useState(true);
     const [isSending, setIsSending] = useState(false);
     const [isUser, setIsUser] = useState(undefined);
     const [emailUsed, setEmailUsed] = useState(undefined);
@@ -103,26 +102,15 @@ const SignUp = () => {
 
         axios.post('/users', signupData)
         .then((res) => {
-            console.log("Sucessfully return")
-            console.log(res)
             dispatchUser({type: "isUser"})
             setIsSending(false)
             setIsUser(true)
         })
         .catch((err) => {
-            console.log(err)
             setIsUser(false)
             setIsSending(false)
 
         })
-
-        // var emptyEl = {};
-        // var updatedFormData = {};
-        // for (el in formData){
-        //     emptyEl = updateObject(el, {value: ""});
-        //     updatedFormData = updateObject(formData, emptyEl);
-        //     setFormData(updatedFormData);
-        // }
     }
 
     // Creating the Signup Form dynamically

@@ -45,7 +45,6 @@ const Login = () => {
         }
         axios.post('/users/login', {...loginData})
         .then((res) => {
-            console.log(res)
             if(!res.data.isUser){
                 setIsWrongData(true)
             }
@@ -55,7 +54,6 @@ const Login = () => {
             
         })
         .catch((err) => {
-            console.log(err)
             setIsWrongData(true)
             setIsSending(false)
         })

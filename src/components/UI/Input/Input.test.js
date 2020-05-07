@@ -30,8 +30,4 @@ describe("Test if correct Input field is rendered with according to props past",
         expect(wrapper.containsMatchingElement(<select></select>)).toBeTruthy();
     })
     
-    // it("should render checkbox input el", () => {
-    //     wrapper.setProps({elConfig: {options: []}, elType: "checkbox", });
-    //     expect(wrapper.containsMatchingElement(<input type="checkbox" />)).toBeTruthy();
-    // })
 })
