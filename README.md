@@ -17,6 +17,17 @@ Password: 1234567
 
 <a name="architecture"/>
 
+## How to run this locally
+Incase the [online version](https://fierce-tundra-77613.herokuapp.com/) is not suitable for yourrequirments, this is how to set it up locally. 
+
+1. Clone [Epic Publish Backend Repo](https://github.com/heikodam/epic-publish-backend) and install all dependencies
+2. Run this command
+```bash
+npm run all-services
+```
+3. Go to this site [http://localhost:4545/](http://localhost:4545/)
+
+
 ## Architecture & Tech Stack
 
 <img src="https://res.cloudinary.com/heikodam/image/upload/v1588881439/Epic_Publish_Architecture_umw5cc.jpg" width="700">
